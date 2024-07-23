@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IEEE-754 Decimal-32 Floating-Point Converter</title>
     <link rel="stylesheet" href="layout/styles.css">
+    <style>
+        .output-boxes {
+            display: none; /* Hide the output boxes initially */
+        }
+        .output-boxes.show {
+            display: block; /* Show the output boxes when results are available */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,6 +40,25 @@
                 <button type="submit" class="convert-button">Convert</button>
             </form>
         </div>
+        <!-- Output fields -->
+        <div class="output-boxes" id="output-boxes">
+            <div class="output-box">
+                <h2>Decimal</h2>
+                <p id="decimal-output">[Decimal output will be displayed here]</p>
+            </div>
+            <div class="output-box">
+                <h2>Binary (32-bit)</h2>
+                <p id="binary-output">[Binary output will be displayed here]</p>
+            </div>
+            <div class="output-box">
+                <h2>Hexadecimal (32-bit)</h2>
+                <p id="hex-output">[Hexadecimal output will be displayed here]</p>
+            </div>
+            <div class="output-box">
+                <h2>Normalized</h2>
+                <p id="normalized-output">[Normalized output will be displayed here]</p>
+            </div>
+        </div>
     </div>
     <footer>
         <p>By GROUP 14: Calugtong, Salic, Valladolid</p>
@@ -49,12 +76,18 @@
             var number = baseNumber * Math.pow(10, exponent);
 
             var ieee754 = new extIeee754();
+            var decimalOutput = ieee754.to('dec', number);
+            var binaryOutput = ieee754.to('bin32', number);
+            var hexOutput = ieee754.to('hex32', number);
+            var normalizedOutput = ieee754.normalize(number);
 
-            localStorage.setItem('decimal', ieee754.to('dec', number));
-            localStorage.setItem('binary', ieee754.to('bin32', number));
-            localStorage.setItem('hexadecimal', ieee754.to('hex32', number));
-            localStorage.setItem('normalized', ieee754.normalize(number));
+            // Save results to localStorage
+            localStorage.setItem('decimal', decimalOutput);
+            localStorage.setItem('binary', binaryOutput);
+            localStorage.setItem('hexadecimal', hexOutput);
+            localStorage.setItem('normalized', normalizedOutput);
 
+            // Redirect to output.html
             window.location.href = 'output.html';
         }
     </script>

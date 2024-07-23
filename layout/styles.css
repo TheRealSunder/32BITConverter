@@ -1,0 +1,216 @@
+/* Common Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Lucida Console;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #076907;
+    padding: 20px;
+    color: white;
+}
+
+header h1 {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+    text-align: left;
+    margin-left: 10px;
+}
+
+header h1 span {
+    color: #a9fe54;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 12px;
+    color:#076907;
+    font-weight: bold;
+}
+
+/* Decimal Page Specific Styles */
+.container-decimal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0px 10px 10px;
+    padding: 0;
+    flex-direction: column;
+}
+
+.container-title-decimal {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.converter-box {
+    width: 600px;
+    border: 1.5px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: #E7E9EC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 32px;
+    justify-content: center;
+}
+
+.input-group input {
+    width: 14rem;
+    padding: .625rem;
+    margin-right: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 29px;
+}
+
+.input-group .exponent-input {
+    width: 5rem;
+    font-size: 20px;
+    padding: .375rem;
+    align-self: flex-start;
+}
+
+.input-group span {
+    margin-right: 10px;
+}
+
+.round-off-group {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.round-off-group .round-off-label {
+    margin-bottom: 5px;
+}
+
+.round-off-group select {
+    width: 450px;
+    padding: .625rem;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.convert-button {
+    width: 450px;
+    padding: 10px;
+    background-color: #ccff99;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.convert-button:hover {
+    background-color: #99ff66;
+}
+
+.convert-button a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Output Page Specific Styles */
+.container-output {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 15px 10px 10px;
+    padding: 0;
+    flex-direction: column;
+}
+
+.container-title-output {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.output-boxes {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.output-box {
+    border: 1.5px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: #E7E9EC;
+}
+
+.output-box h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.output-box p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    width: 200px;
+    padding: 10px;
+    background-color: #ccff99;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+.action-button:hover {
+    background-color: #99ff66;
+}
+
+.action-button a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}

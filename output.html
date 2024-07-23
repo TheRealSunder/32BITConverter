@@ -27,10 +27,6 @@
                 <h2>Hexadecimal (32-bit)</h2>
                 <p id="hex-output">[Hexadecimal output will be displayed here]</p>
             </div>
-            <div class="output-box">
-                <h2>Normalized</h2>
-                <p id="normalized-output">[Normalized output will be displayed here]</p>
-            </div>
         </div>
         <div class="button-container">
             <button class="action-button"><a href="decimal.html">Go back</a></button>
@@ -46,25 +42,35 @@
             const decimal = document.getElementById('decimal-output').innerText;
             const binary = document.getElementById('binary-output').innerText;
             const hex = document.getElementById('hex-output').innerText;
-            const normalized = document.getElementById('normalized-output').innerText;
 
-            const text = `Decimal: ${decimal}\nBinary: ${binary}\nHexadecimal: ${hex}\nNormalized: ${normalized}`;
+            // Build the text content for the file
+            const text = `Decimal: ${decimal}\nBinary: ${binary}\nHexadecimal: ${hex}`;
 
+            // Create a Blob object with the text content
             const blob = new Blob([text], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
+
+            // Create an anchor element to download the file
             const a = document.createElement('a');
             a.href = url;
             a.download = 'conversion-results.txt';
+
+            // Append the anchor to the body and trigger a click to start the download
             document.body.appendChild(a);
             a.click();
+
+            // Remove the anchor element from the document
             document.body.removeChild(a);
+
+            // Revoke the object URL to free up resources
+            URL.revokeObjectURL(url);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('decimal-output').innerText = localStorage.getItem('decimal');
-            document.getElementById('binary-output').innerText = localStorage.getItem('binary');
-            document.getElementById('hex-output').innerText = localStorage.getItem('hexadecimal');
-            document.getElementById('normalized-output').innerText = localStorage.getItem('normalized');
+            // Retrieve data from localStorage and display it
+            document.getElementById('decimal-output').innerText = localStorage.getItem('decimal') || 'No data';
+            document.getElementById('binary-output').innerText = localStorage.getItem('binary') || 'No data';
+            document.getElementById('hex-output').innerText = localStorage.getItem('hexadecimal') || 'No data';
         });
     </script>
 </body>
