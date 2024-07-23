@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE-754 Decimal-32 Floating-Point Converter</title>
+    <link rel="stylesheet" href="layout/styles.css">
+</head>
+<body>
+    <header>
+        <h1>IEEE-754 Decimal-32 floating-point <span>converter</span></h1>
+    </header>
+    <div class="container-decimal">
+        <div class="container-title-decimal">
+            Enter decimal:
+        </div>
+        <div class="converter-box">
+            <form id="converter-form">
+                <div class="input-group">
+                    <input type="text" id="baseNumber" class="decimal-input" required>
+                    <span>x 10^</span>
+                    <input type="text" id="exponent" class="exponent-input" required>
+                </div>
+                <div class="round-off-group">
+                    <label class="round-off-label" for="round-off-method">Round-off method:</label>
+                    <select id="round-off-method">
+                        <option value="truncate">Truncate</option>
+                        <option value="round down">Round down</option>
+                        <option value="round up">Round up</option>
+                    </select>
+                </div>
+                <button type="submit" class="convert-button">Convert</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>By GROUP 14: Calugtong, Salic, Valladolid</p>
+    </footer>
+    <script src="ieee754-converter.js"></script>
+    <script>
+        document.getElementById('converter-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            convert();
+        });
+
+        function convert() {
+            var baseNumber = parseFloat(document.getElementById('baseNumber').value);
+            var exponent = parseInt(document.getElementById('exponent').value, 10);
+            var number = baseNumber * Math.pow(10, exponent);
+
+            var ieee754 = new extIeee754();
+
+            localStorage.setItem('decimal', ieee754.to('dec', number));
+            localStorage.setItem('binary', ieee754.to('bin32', number));
+            localStorage.setItem('hexadecimal', ieee754.to('hex32', number));
+            localStorage.setItem('normalized', ieee754.normalize(number));
+
+            window.location.href = 'output.html';
+        }
+    </script>
+</body>
+</html>

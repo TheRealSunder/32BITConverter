@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE-754 Decimal-32 Floating-Point Converter - Output</title>
+    <link rel="stylesheet" href="layout/styles.css">
+</head>
+<body>
+    <header>
+        <h1>IEEE-754 Decimal-32 floating-point <span>converter</span></h1>
+    </header>
+    <div class="container-output">
+        <div class="container-title-output">
+            Conversion Results:
+        </div>
+        <div class="output-boxes">
+            <div class="output-box">
+                <h2>Decimal</h2>
+                <p id="decimal-output">[Decimal output will be displayed here]</p>
+            </div>
+            <div class="output-box">
+                <h2>Binary (32-bit)</h2>
+                <p id="binary-output">[Binary output will be displayed here]</p>
+            </div>
+            <div class="output-box">
+                <h2>Hexadecimal (32-bit)</h2>
+                <p id="hex-output">[Hexadecimal output will be displayed here]</p>
+            </div>
+            <div class="output-box">
+                <h2>Normalized</h2>
+                <p id="normalized-output">[Normalized output will be displayed here]</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="action-button"><a href="decimal.html">Go back</a></button>
+            <button class="action-button" onclick="exportToText()">Export as .txt</button>
+        </div>
+    </div>
+    <footer>
+        <p>By GROUP 14: Calugtong, Salic, Valladolid</p>
+    </footer>
+
+    <script>
+        function exportToText() {
+            const decimal = document.getElementById('decimal-output').innerText;
+            const binary = document.getElementById('binary-output').innerText;
+            const hex = document.getElementById('hex-output').innerText;
+            const normalized = document.getElementById('normalized-output').innerText;
+
+            const text = `Decimal: ${decimal}\nBinary: ${binary}\nHexadecimal: ${hex}\nNormalized: ${normalized}`;
+
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'conversion-results.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('decimal-output').innerText = localStorage.getItem('decimal');
+            document.getElementById('binary-output').innerText = localStorage.getItem('binary');
+            document.getElementById('hex-output').innerText = localStorage.getItem('hexadecimal');
+            document.getElementById('normalized-output').innerText = localStorage.getItem('normalized');
+        });
+    </script>
+</body>
+</html>
